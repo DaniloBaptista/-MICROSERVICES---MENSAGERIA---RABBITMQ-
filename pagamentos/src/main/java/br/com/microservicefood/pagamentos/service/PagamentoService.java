@@ -13,12 +13,15 @@ import org.modelmapper.ModelMapper;
 
 @Service
 public class PagamentoService {
-
     @Autowired
     private PagamentoRepository repository;
 
+    private final ModelMapper modelMapper;
+
     @Autowired
-    private ModelMapper modelMapper;
+    public PagamentoService(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     public Page<PagamentoDto> obterTodos(Pageable paginacao) {
         return repository
